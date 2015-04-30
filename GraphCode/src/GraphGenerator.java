@@ -11,11 +11,11 @@ public class GraphGenerator {
     private static final int MAXIMUM_NUMBER_OF_VERTICES = 50;
     private static final int MAXIMUM_EDGE_WEIGHT = 100;
 
-    public static ListenableUndirectedWeightedGraph<ColoredVertex, GraphEdge> generateRandomGraph
+    public static NPGraph<ColoredVertex, GraphEdge> generateRandomGraph
             (int minVertices, int maxVertices, int minWeight, int maxWeight) {
 
-        ListenableUndirectedWeightedGraph<ColoredVertex, GraphEdge> randomGraph =
-                new ListenableUndirectedWeightedGraph<ColoredVertex, GraphEdge>(GraphEdge.class);
+        NPGraph<ColoredVertex, GraphEdge> randomGraph =
+                new NPGraph<ColoredVertex, GraphEdge>(GraphEdge.class);
 
         Random random = new Random();
         int numVertices = random.ints(minVertices, maxVertices + 1).findFirst().getAsInt();
@@ -35,12 +35,9 @@ public class GraphGenerator {
         }
 
         Collections.shuffle(intList, new Random());
-        for(Integer integer : intList) {
-            System.out.println(String.valueOf(integer));
-        }
 
         for(int i = 0; i < numVertices / 2; i++) {
-            ((ColoredVertex) graphVertices[i]).setColor(ColoredVertex.COLOR_RED);
+            ((ColoredVertex) graphVertices[intList.get(i)]).setColor(ColoredVertex.COLOR_RED);
         }
 
         for(int i = 0; i < graphVertices.length; i++) {

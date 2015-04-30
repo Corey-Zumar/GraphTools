@@ -17,5 +17,13 @@ public class GraphEdge extends DefaultWeightedEdge {
         return String.valueOf((int) getWeight());
     }
 
+    public int getSourceVertex() {
+        return ((ColoredVertex) getSource()).number;
+    }
+
+    public int getTargetVertex() {
+        return ((ColoredVertex) getTarget()).number;
+    }
+
 
 }

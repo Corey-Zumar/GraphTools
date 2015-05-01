@@ -50,7 +50,7 @@ public class NPGraph<V,E> extends ListenableUndirectedWeightedGraph<V,E> {
                 lineBuilder.append(edge.toString() + " ");
             }
             String line = lineBuilder.toString();
-            outputBuilder.append(line.substring(0, line.length()) + "\n");
+            outputBuilder.append(line.substring(0, line.length() - 1) + "\n");
         }
 
         StringBuilder colorBuilder = new StringBuilder();

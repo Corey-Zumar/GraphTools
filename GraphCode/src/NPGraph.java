@@ -2,6 +2,7 @@ import org.jgrapht.ext.MatrixExporter;
 import org.jgrapht.graph.ListenableUndirectedWeightedGraph;
 
 import java.io.*;
+import java.util.*;
 
 /**
  * Created by Corey on 4/30/15.
@@ -19,27 +20,47 @@ public class NPGraph<V,E> extends ListenableUndirectedWeightedGraph<V,E> {
 
     public String toString() {
 
-        for(V vertex : vertexSet()) {
-            if(vertex instanceof  ColoredVertex) {
-                ColoredVertex coloredVertex = (ColoredVertex) vertex;
-                for(E edge : edgesOf(vertex)) {
-                    /*if(((GraphEdge) edge).getSourceVertex() == 2) {
-                        System.out.println(
-                                ((GraphEdge) edge).getSourceVertex() + " | " +
-                                        ((GraphEdge) edge).getTargetVertex() + " : " + edge.toString());
-                    }*/
-
-                }
-            }
-        }
+        Map<Integer,List<GraphEdge>> adjacencyMap = new TreeMap<Integer, List<GraphEdge>>();
         for(E edge : edgeSet()) {
-                System.out.println(
-                        ((GraphEdge) edge).getSourceVertex() + " | " +
-                                ((GraphEdge) edge).getTargetVertex() + " : " + edge.toString());
+                int source = ((GraphEdge) edge).getSourceVertex();
+                int target = ((GraphEdge) edge).getTargetVertex();
+                if(adjacencyMap.containsKey(source)) {
+                    adjacencyMap.get(source).add((GraphEdge) edge);
+                } else {
+                    List<GraphEdge> vertexConnections = new ArrayList<GraphEdge>();
+                    vertexConnections.add((GraphEdge) edge);
+                    adjacencyMap.put(source, vertexConnections);
+                }
+                if(adjacencyMap.containsKey(target)) {
+                    adjacencyMap.get(target).add((GraphEdge) edge);
+                } else {
+                    List<GraphEdge> vertexConnections = new ArrayList<GraphEdge>();
+                    vertexConnections.add((GraphEdge) edge);
+                    adjacencyMap.put(target, vertexConnections);
+                }
 
         }
+        StringBuilder outputBuilder = new StringBuilder();
+        outputBuilder.append(String.valueOf(adjacencyMap.size()));
+        outputBuilder.append("\n");
+        for(Map.Entry<Integer,List<GraphEdge>> entry : adjacencyMap.entrySet()) {
+            entry.getValue().add(entry.getKey(), new GraphEdge(0));
+            StringBuilder lineBuilder = new StringBuilder();
+            for(GraphEdge edge : entry.getValue()) {
+                lineBuilder.append(edge.toString() + " ");
+            }
+            String line = lineBuilder.toString();
+            outputBuilder.append(line.substring(0, line.length()) + "\n");
+        }
 
-        return null;
+        StringBuilder colorBuilder = new StringBuilder();
+        for(V vertex : vertexSet()) {
+            colorBuilder.append(((ColoredVertex) vertex).color ==
+                    ColoredVertex.COLOR_BLUE ? ColoredVertex.COLOR_BLUE_READABLE : ColoredVertex.COLOR_RED_READABLE);
+        }
+        outputBuilder.append(colorBuilder.toString());
+
+        return outputBuilder.toString();
     }
 
 }

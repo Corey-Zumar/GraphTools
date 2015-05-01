@@ -7,6 +7,9 @@ public class ColoredVertex {
     public static final int COLOR_RED = 1;
     public static final int COLOR_DEFAULT = COLOR_BLUE;
 
+    public static final String COLOR_BLUE_READABLE = "B";
+    public static final String COLOR_RED_READABLE = "R";
+
     public int color;
     public int number;
 

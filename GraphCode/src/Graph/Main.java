@@ -1,3 +1,6 @@
+package Graph;
+
+import BranchAndBound.BranchAndBoundAlgorithm;
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraphView;
@@ -14,11 +17,16 @@ public class Main {
 
 
     public static void main(String[] args) {
-        try {
-            processInstanceGraph();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        int minVertices = 6;
+        int maxVertices = 6;
+        int minEdgeWeight = 0;
+        int maxEdgeWeight = 100;
+
+        NPGraph<ColoredVertex,GraphEdge> randomGraph = GraphGenerator
+                .generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);
+
+        BranchAndBoundAlgorithm.branchAndBound(randomGraph);
+        displayGraph(randomGraph);
     }
 
     public static void processInstanceGraph() throws IOException {
@@ -26,7 +34,7 @@ public class Main {
         GraphFileWriter.writeGraphToFile(instanceGraph, "insttest.in");
     }
 
-    public static void generateGraph() {
+    public static NPGraph<ColoredVertex,GraphEdge> generateAndWriteRandomGraph() {
         int minVertices = 30;
         int maxVertices = 50;
         int minEdgeWeight = 0;
@@ -37,9 +45,14 @@ public class Main {
         NPGraph<ColoredVertex,GraphEdge> randomGraph = GraphGenerator
                 .generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);
         GraphFileWriter.writeGraphToFile(randomGraph, outputFileNameNoExtension);
-        JGraphXAdapter<ColoredVertex, GraphEdge> adapter = new JGraphXAdapter<ColoredVertex, GraphEdge>(randomGraph);
 
-        JFrame frame = new JFrame("NP Graph with " + randomGraph.vertexSet().size() + " vertices");
+        return randomGraph;
+    }
+
+    public static void displayGraph(NPGraph graphToDisplay) {
+        JGraphXAdapter<ColoredVertex, GraphEdge> adapter = new JGraphXAdapter<ColoredVertex, GraphEdge>(graphToDisplay);
+
+        JFrame frame = new JFrame("NP Graph with " + graphToDisplay.vertexSet().size() + " vertices");
         frame.setPreferredSize(new Dimension(1000, 1000));
 
         mxGraphComponent component = new mxGraphComponent(adapter);

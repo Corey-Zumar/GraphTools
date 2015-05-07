@@ -1,3 +1,5 @@
+package Graph;
+
 import org.jgrapht.EdgeFactory;
 
 /**

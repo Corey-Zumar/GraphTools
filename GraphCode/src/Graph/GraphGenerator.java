@@ -1,5 +1,6 @@
+package Graph;
+
 import org.jgrapht.generate.CompleteGraphGenerator;
-import org.jgrapht.graph.ListenableUndirectedWeightedGraph;
 
 import java.util.*;
 

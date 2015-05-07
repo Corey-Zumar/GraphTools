@@ -1,3 +1,5 @@
+package Graph;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,14 +20,11 @@ public class InstanceProcessor {
         int numVertices = Integer.valueOf(lineData.remove(0));
         String graphColoring = lineData.remove(lineData.size() - 1);
 
-        List<ColoredVertex> vertices = new ArrayList<ColoredVertex>();
-
         NPGraph<ColoredVertex,GraphEdge> instanceGraph = new NPGraph<ColoredVertex,GraphEdge>(GraphEdge.class);
         for(int i = 0; i < numVertices; i++) {
             ColoredVertex vertex = new ColoredVertex(graphColoring.charAt(i) == ColoredVertex.COLOR_BLUE_READABLE ?
                     ColoredVertex.COLOR_BLUE : ColoredVertex.COLOR_RED);
             vertex.setNumber(i);
-            vertices.add(vertex);
             instanceGraph.addVertex(vertex);
         }
 
@@ -36,7 +35,7 @@ public class InstanceProcessor {
                 int weight = Integer.valueOf(edgeWeights[j]);
                 GraphEdge newEdge = new GraphEdge(weight);
                 if(i != j) {
-                    instanceGraph.addEdge(vertices.get(i), vertices.get(j), newEdge);
+                    instanceGraph.addEdge(instanceGraph.getVertex(i), instanceGraph.getVertex(j), newEdge);
                 }
             }
         }

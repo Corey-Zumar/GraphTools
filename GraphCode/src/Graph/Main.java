@@ -1,5 +1,7 @@
 package Graph;
 
+import BranchAndBound.BBSubproblem;
+import BranchAndBound.BranchAndBoundAlgorithm;
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraphView;
@@ -18,17 +20,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<Integer> sizes = InstanceProcessor.getInstanceSizes("../instances/");
+        /*List<Integer> sizes = InstanceProcessor.getInstanceSizes("../instances/");
         int possibleCount = 0;
         for(Integer size : sizes) {
             if(size <= 18) {
                 possibleCount++;
             }
         }
-        System.out.println((double) possibleCount / sizes.size());
+        System.out.println((double) possibleCount / sizes.size());*/
 
-        /*int minVertices = 5;
-        int maxVertices = 5;
+        int minVertices = 18;
+        int maxVertices = 18;
         int minEdgeWeight = 0;
         int maxEdgeWeight = 100;
 
@@ -40,7 +42,7 @@ public class Main {
         System.out.println(solution.currentCost);
         System.out.println(solution.path);
 
-        displayGraph(randomGraph);*/
+        displayGraph(randomGraph);
     }
 
     public static void processInstanceGraph() throws IOException {

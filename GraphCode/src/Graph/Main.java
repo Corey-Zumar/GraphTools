@@ -2,6 +2,7 @@ package Graph;
 
 import BranchAndBound.BBSubproblem;
 import BranchAndBound.BranchAndBoundAlgorithm;
+import GreedyTSP.GreedyAlgorithm;
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraphView;
@@ -29,20 +30,24 @@ public class Main {
         }
         System.out.println((double) possibleCount / sizes.size());*/
 
-        int minVertices = 18;
-        int maxVertices = 18;
+        int minVertices = 50;
+        int maxVertices = 50;
         int minEdgeWeight = 0;
         int maxEdgeWeight = 100;
 
         NPGraph<ColoredVertex,GraphEdge> randomGraph = GraphGenerator
                 .generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);
 
-        BBSubproblem solution = BranchAndBoundAlgorithm.branchAndBound(randomGraph);
+
+
+        GreedyAlgorithm.greedy(randomGraph);
+
+       /* BBSubproblem solution = BranchAndBoundAlgorithm.branchAndBound(randomGraph);
 
         System.out.println(solution.currentCost);
         System.out.println(solution.path);
 
-        displayGraph(randomGraph);
+        displayGraph(randomGraph);*/
     }
 
     public static void processInstanceGraph() throws IOException {

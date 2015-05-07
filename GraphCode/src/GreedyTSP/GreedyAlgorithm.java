@@ -116,5 +116,11 @@ public class GreedyAlgorithm {
             }
         }
 
+        totalWeight = 0;
+        for (int i = 0; i < visited.size() - 1; i++) {
+            GraphEdge currEdge = (GraphEdge) inputGraph.getEdge(visited.get(i), visited.get(i + 1));
+            totalWeight += currEdge.getEdgeWeight();
+        }
+
     }
 }

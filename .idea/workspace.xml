@@ -26,8 +26,8 @@
       <file leaf-file-name="GreedyAlgorithm.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GraphCode/src/GreedyTSP/GreedyAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44815466" vertical-offset="1305" max-vertical-offset="1890">
-              <caret line="104" column="47" selection-start-line="104" selection-start-column="47" selection-end-line="104" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.84182775" vertical-offset="1351" max-vertical-offset="1980">
+              <caret line="122" column="9" selection-start-line="122" selection-start-column="9" selection-end-line="122" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#310#325#0" expanded="true" />
@@ -465,12 +465,12 @@
       <created>1430960059198</created>
       <updated>1430960059198</updated>
       <workItem from="1430960060994" duration="15257000" />
-      <workItem from="1431030336827" duration="1410000" />
+      <workItem from="1431030336827" duration="1913000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16667000" />
+    <option name="totallyTimeSpent" value="17170000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="22" width="1400" height="713" extended-state="0" />
@@ -612,8 +612,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GraphCode/src/GreedyTSP/GreedyAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44815466" vertical-offset="1305" max-vertical-offset="1890">
-          <caret line="104" column="47" selection-start-line="104" selection-start-column="47" selection-end-line="104" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.84182775" vertical-offset="1351" max-vertical-offset="1980">
+          <caret line="122" column="9" selection-start-line="122" selection-start-column="9" selection-end-line="122" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#310#325#0" expanded="true" />

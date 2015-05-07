@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class BranchAndBoundAlgorithm {
 
-    public static void branchAndBound(NPGraph inputGraph) {
+    public static BBSubproblem branchAndBound(NPGraph inputGraph) {
         int randomStartPoint = new Random().ints(1,0,inputGraph.vertexSet().size()).findFirst().getAsInt();
         ColoredVertex startVertex = inputGraph.getVertex(randomStartPoint);
         HashSet<ColoredVertex> validSet = new HashSet<ColoredVertex>();
@@ -21,24 +21,30 @@ public class BranchAndBoundAlgorithm {
 
         BBSubproblem firstProblem = new BBSubproblem(startVertex, validSet, startVertex, Integer.MAX_VALUE);
 
-        Queue<BBSubproblem> problemQueue = new PriorityQueue<BBSubproblem>();
+        Stack<BBSubproblem> problemQueue = new Stack<BBSubproblem>();
         problemQueue.add(firstProblem);
-        int bestSoFar = Integer.MAX_VALUE;
+        BBSubproblem bestSoFar = firstProblem;
+
         while(!problemQueue.isEmpty()) {
-            BBSubproblem subproblem = problemQueue.remove();
+            BBSubproblem subproblem = problemQueue.pop();
             Set<ColoredVertex> complement = new HashSet<ColoredVertex>(inputGraph.vertexSet());
             complement.removeAll(subproblem.validVertices);
 
             for(ColoredVertex vertex : complement) {
                 BBSubproblem newProblem = new BBSubproblem(inputGraph, subproblem, vertex);
 
+                if(!newProblem.isValid()) {
+                    continue;
+                }
 
-
-                if(computeLowerBound(inputGraph, newProblem) < bestSoFar) {
-                    
+                if(isCompleteSolution(inputGraph, newProblem) && newProblem.compareTo(bestSoFar) < 0) {
+                    bestSoFar = newProblem;
+                } else if(computeLowerBound(inputGraph, newProblem) < bestSoFar.currentCost) {
+                    problemQueue.push(newProblem);
                 }
             }
         }
+        return bestSoFar;
     }
 
     private static boolean isCompleteSolution(NPGraph inputGraph, BBSubproblem subproblem) {
@@ -76,7 +82,7 @@ public class BranchAndBoundAlgorithm {
 
         int complementMSTWeight = (int) MSTInstance.getMinimumSpanningTreeTotalWeight();
 
-        return lightestEdgeFromA + lightestEdgeFromB + complementMSTWeight;
+        return subproblem.currentCost + lightestEdgeFromA + lightestEdgeFromB + complementMSTWeight;
     }
 
 

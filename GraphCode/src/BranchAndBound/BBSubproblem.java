@@ -4,19 +4,22 @@ import Graph.ColoredVertex;
 import Graph.GraphEdge;
 import Graph.NPGraph;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Created by Corey on 5/6/15.
  */
-public class BBSubproblem {
+public class BBSubproblem implements Comparable<BBSubproblem> {
 
-    Set<ColoredVertex> validVertices;
-    ColoredVertex startVertex, targetVertex;
+    public Set<ColoredVertex> validVertices;
+    public ColoredVertex startVertex, targetVertex;
 
-    int currentCost;
+    public int currentCost;
+
+    public List<ColoredVertex> path;
 
     public BBSubproblem(ColoredVertex startVertex,
                         Set<ColoredVertex> validVertices, ColoredVertex targetVertex, int cost) {
@@ -24,6 +27,9 @@ public class BBSubproblem {
         this.startVertex = startVertex;
         this.targetVertex = targetVertex;
         this.currentCost = cost;
+
+        path = new ArrayList<ColoredVertex>();
+        path.add(startVertex);
     }
 
     public BBSubproblem(NPGraph graph, BBSubproblem oldProblem, ColoredVertex newVertex) {
@@ -38,7 +44,26 @@ public class BBSubproblem {
         } else {
             this.currentCost = newEdgeWeight;
         }
+
+        path = new ArrayList<ColoredVertex>(oldProblem.path);
+        path.add(newVertex);
     }
 
+    public boolean isValid() {
+        int size = path.size();
 
+        if(size < 3) {
+            return true;
+        }
+
+        ColoredVertex last = path.get(size - 1);
+        ColoredVertex secondToLast = path.get(size - 2);
+        ColoredVertex thirdToLast = path.get(size - 3);
+        return !((last.color == secondToLast.color) && (secondToLast.color == thirdToLast.color));
+    }
+
+    @Override
+    public int compareTo(BBSubproblem other) {
+        return currentCost - other.currentCost;
+    }
 }

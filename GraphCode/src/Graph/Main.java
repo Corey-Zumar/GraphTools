@@ -1,6 +1,5 @@
 package Graph;
 
-import BranchAndBound.BranchAndBoundAlgorithm;
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraphView;
@@ -9,6 +8,7 @@ import org.jgrapht.ext.JGraphXAdapter;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+import java.util.List;
 
 /**
  * Created by Corey on 4/28/15.
@@ -17,16 +17,30 @@ public class Main {
 
 
     public static void main(String[] args) {
-        int minVertices = 6;
-        int maxVertices = 6;
+
+        List<Integer> sizes = InstanceProcessor.getInstanceSizes("../instances/");
+        int possibleCount = 0;
+        for(Integer size : sizes) {
+            if(size <= 18) {
+                possibleCount++;
+            }
+        }
+        System.out.println((double) possibleCount / sizes.size());
+
+        /*int minVertices = 5;
+        int maxVertices = 5;
         int minEdgeWeight = 0;
         int maxEdgeWeight = 100;
 
         NPGraph<ColoredVertex,GraphEdge> randomGraph = GraphGenerator
                 .generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);
 
-        BranchAndBoundAlgorithm.branchAndBound(randomGraph);
-        displayGraph(randomGraph);
+        BBSubproblem solution = BranchAndBoundAlgorithm.branchAndBound(randomGraph);
+
+        System.out.println(solution.currentCost);
+        System.out.println(solution.path);
+
+        displayGraph(randomGraph);*/
     }
 
     public static void processInstanceGraph() throws IOException {

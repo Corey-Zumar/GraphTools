@@ -59,5 +59,22 @@ public class InstanceProcessor {
         return lineData;
     }
 
+    public static List<Integer> getInstanceSizes(String directory) {
+        int fileNumber = 1;
+        List<Integer> sizes = new ArrayList<Integer>();
+        try {
+            while (true) {
+                String fileName = fileNumber + ".in";
+                String path = directory + fileName;
+
+                BufferedReader br = new BufferedReader(new FileReader(path));
+                sizes.add(Integer.valueOf(br.readLine().trim()));
+                fileNumber++;
+            }
+        } catch(IOException e) {
+            return sizes;
+        }
+    }
+
 
 }

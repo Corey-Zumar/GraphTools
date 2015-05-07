@@ -68,5 +68,10 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module" module-name="test1" />
+    <orderEntry type="module" module-name="test" />
+    <orderEntry type="module" module-name="main1" />
+    <orderEntry type="module" module-name="main2" />
   </component>
 </module>
+

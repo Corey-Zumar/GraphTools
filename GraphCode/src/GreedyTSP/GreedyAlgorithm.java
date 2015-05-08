@@ -174,6 +174,7 @@ public class GreedyAlgorithm {
             totalWeight += currEdge.getEdgeWeight();
             answerColor += visited.get(i).color;
         }
+        answerColor += visited.get(visited.size() - 1).color;
 
         System.out.println(visitedByNo);
         System.out.println(totalWeight);

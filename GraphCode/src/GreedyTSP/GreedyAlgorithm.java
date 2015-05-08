@@ -83,7 +83,7 @@ public class GreedyAlgorithm {
                     interColor += visited.get(i).color;
                 }
                 interColor += visited.get(visited.size() - 1).color;
-                System.out.println(interColor);
+                //System.out.println(interColor);
 
                 if (whereInVisited != 50) {
                     visited.set(k + 1, bestVertFix);
@@ -92,7 +92,7 @@ public class GreedyAlgorithm {
                     visitedByNo.set(whereInVisited, movedVertexNo);
                     bluesSeen = 1;
                 } else {
-                    System.out.println("BOO");
+                    //System.out.println("BOO");
                     int consecSeen = 0;
                     int okFix = Integer.MAX_VALUE;
                     int fixIndex = 50;
@@ -110,10 +110,10 @@ public class GreedyAlgorithm {
                             consecSeen = 0;
                         }
                     }
-                    visited.remove(movedVertexNo);
-                    visitedByNo.remove(movedVertexNo);
-                    visited.add(fixIndex - 1, movedVertex);
-                    visitedByNo.add(fixIndex - 1, movedVertexNo);
+                    ColoredVertex fuckthis = visited.remove(k + 1);
+                    int fuckthismore = visitedByNo.remove(k + 1);
+                    visited.add(fixIndex - 1, fuckthis);
+                    visitedByNo.add(fixIndex - 1, fuckthismore);
                     bluesSeen = 3;
                 }
             }
@@ -149,7 +149,7 @@ public class GreedyAlgorithm {
                     interColor += visited.get(i).color;
                 }
                 interColor += visited.get(visited.size() - 1).color;
-                System.out.println(interColor);
+                //System.out.println(interColor);
 
                 if (whereInVisited != 50) {
                     visited.set(k + 1, bestVertFix);
@@ -175,10 +175,10 @@ public class GreedyAlgorithm {
                             consecSeen = 0;
                         }
                     }
-                    visited.remove(movedVertexNo);
-                    visitedByNo.remove(movedVertexNo);
-                    visited.add(fixIndex - 1, movedVertex);
-                    visitedByNo.add(fixIndex - 1, movedVertexNo);
+                    ColoredVertex fuckthis = visited.remove(k + 1);
+                    int fuckthismore = visitedByNo.remove(k + 1);
+                    visited.add(fixIndex - 1, fuckthis);
+                    visitedByNo.add(fixIndex - 1, fuckthismore);
                     redsSeen = 3;
                 }
             }
@@ -193,9 +193,9 @@ public class GreedyAlgorithm {
         }
         answerColor += visited.get(visited.size() - 1).color;
 
-        System.out.println(visitedByNo);
-        System.out.println(totalWeight);
-        System.out.print(answerColor);
+        //System.out.println(visitedByNo);
+        //System.out.println(totalWeight);
+        //System.out.print(answerColor);
 
     }
 }

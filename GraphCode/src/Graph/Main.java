@@ -1,10 +1,6 @@
 package Graph;
 
-import BranchAndBound.*;
-import GreedyTSP.Greedy2;
-import GreedyTSP.GreedyAlgorithm;
-import GreedyTSP.GreedySolver;
-import GreedyTSP.Path;
+import BranchAndBound.ExactSolverExecutor;
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraphView;
@@ -12,7 +8,7 @@ import org.jgrapht.ext.JGraphXAdapter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -30,15 +26,14 @@ public class Main {
 
 
 
-            NPGraph<ColoredVertex, GraphEdge> randomGraph = GraphGenerator
-                    .generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);
+        NPGraph<ColoredVertex, GraphEdge> randomGraph = GraphGenerator.generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);
 
-        GreedySolver solver = new GreedySolver(randomGraph);
-        solver.solveGreedily();
-
+        //GreedySolver solver = new GreedySolver(randomGraph);
+        //solver.solveGreedily();
+        GreedyTSP.GreedyAlgorithm.greedy(randomGraph);
         }
 
-        //GreedyAlgorithm.greedy(randomGraph);
+
 
 
         //BBSubproblem solution = BranchAndBoundAlgorithm.branchAndBoundRandomStart(randomGraph);

@@ -22,14 +22,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Graph/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="62" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.6238698">
+              <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2447#2473#0" expanded="true" />
+                <element signature="e#2480#2506#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -45,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OutputFileWriter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OutputFileWriter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Graph/OutputFileWriter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40687162">
-              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#584#592#0" expanded="true" />
@@ -184,8 +184,8 @@
         <option value="$PROJECT_DIR$/src/BranchAndBound/BBSubproblem.java" />
         <option value="$PROJECT_DIR$/src/BranchAndBound/ExactSolverExecutor.java" />
         <option value="$PROJECT_DIR$/src/BranchAndBound/ExactSolver.java" />
-        <option value="$PROJECT_DIR$/src/Graph/Main.java" />
         <option value="$PROJECT_DIR$/src/Graph/OutputFileWriter.java" />
+        <option value="$PROJECT_DIR$/src/Graph/Main.java" />
       </list>
     </option>
   </component>
@@ -600,7 +600,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2447#2473#0" expanded="true" />
+            <element signature="e#2480#2506#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -681,7 +681,7 @@
           <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2447#2473#0" expanded="true" />
+            <element signature="e#2480#2506#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1007,24 +1007,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Graph/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/Graph/OutputFileWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="62" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
+          <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2447#2473#0" expanded="true" />
+            <element signature="e#584#592#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Graph/OutputFileWriter.java">
+    <entry file="file://$PROJECT_DIR$/src/Graph/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40687162">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.6238698">
+          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#584#592#0" expanded="true" />
+            <element signature="e#2480#2506#0" expanded="true" />
           </folding>
         </state>
       </provider>

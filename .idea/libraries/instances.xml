@@ -2,7 +2,6 @@
   <library name="instances">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/instances.zip!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/lib/junit.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

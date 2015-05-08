@@ -125,7 +125,7 @@ public class KuhnMunkresMinimalWeightBipartitePerfectMatchingTest extends TestCa
 
         double w = match(costMatrix, costMatrix.length).getMatchingWeight();
 
-        Assert.assertTrue(w == 12);
+        junit.framework.Assert.assertTrue(w == 12);
 
     }
 

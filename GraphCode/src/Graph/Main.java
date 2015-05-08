@@ -20,15 +20,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int minVertices = 12;
-        int maxVertices = 12;
+        int minVertices = 50;
+        int maxVertices = 50;
         int minEdgeWeight = 0;
         int maxEdgeWeight = 100;
 
         NPGraph<ColoredVertex,GraphEdge> randomGraph = GraphGenerator
                 .generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);
 
-        //GreedyAlgorithm.greedy(randomGraph);
+        GreedyAlgorithm.greedy(randomGraph);
         //BBSubproblem solution = BranchAndBoundAlgorithm.branchAndBoundRandomStart(randomGraph);
         //System.out.println(solution.path);
 
@@ -40,6 +40,7 @@ public class Main {
             e.printStackTrace();
         }*/
 
+        /*
         try {
             NPGraph<ColoredVertex,GraphEdge> graph = processInstanceGraph(57);
 
@@ -49,6 +50,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        */
 
     }
 

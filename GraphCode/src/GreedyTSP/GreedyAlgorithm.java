@@ -53,7 +53,7 @@ public class GreedyAlgorithm {
             }
 
 
-            if (bluesSeen == 4) {
+            if (bluesSeen >= 4) {
                 int bestFix = Integer.MAX_VALUE;
                 ColoredVertex bestVertFix = new ColoredVertex();
                 int bestVertFixNo = 50;
@@ -76,15 +76,40 @@ public class GreedyAlgorithm {
                     }
                 }
 
-                visited.set(k + 1, bestVertFix);
-                visitedByNo.set(k + 1, bestVertFixNo);
-                visited.set(whereInVisited, movedVertex);
-                visitedByNo.set(whereInVisited, movedVertexNo);
-
-                bluesSeen = 1;
+                if (whereInVisited != 50) {
+                    visited.set(k + 1, bestVertFix);
+                    visitedByNo.set(k + 1, bestVertFixNo);
+                    visited.set(whereInVisited, movedVertex);
+                    visitedByNo.set(whereInVisited, movedVertexNo);
+                    bluesSeen = 1;
+                } else {
+                    System.out.println(visited);
+                    int consecSeen = 0;
+                    int okFix = Integer.MAX_VALUE;
+                    int fixIndex = 50;
+                    for (int z = k + 4; z < graphSize; z++) {
+                        if (visited.get(z).color == 1) {
+                            consecSeen++;
+                            if (consecSeen > 1) {
+                                GraphEdge firstEdge = (GraphEdge) inputGraph.getEdge(visited.get(z - 1), movedVertex);
+                                GraphEdge secondEdge = (GraphEdge) inputGraph.getEdge(visited.get(z), movedVertex);
+                                if (firstEdge.getEdgeWeight() + secondEdge.getEdgeWeight() < okFix) {
+                                    fixIndex = z;
+                                }
+                            }
+                        } else {
+                            consecSeen = 0;
+                        }
+                    }
+                    visited.remove(movedVertexNo);
+                    visitedByNo.remove(movedVertexNo);
+                    visited.add(fixIndex - 1, movedVertex);
+                    visitedByNo.add(fixIndex - 1, movedVertexNo);
+                    bluesSeen = 3;
+                }
             }
 
-            if (redsSeen == 4) {
+            if (redsSeen >= 4) {
 
                 int bestFix = Integer.MAX_VALUE;
                 ColoredVertex bestVertFix = new ColoredVertex();
@@ -108,12 +133,37 @@ public class GreedyAlgorithm {
                     }
                 }
 
-                visited.set(k + 1, bestVertFix);
-                visitedByNo.set(k + 1, bestVertFixNo);
-                visited.set(whereInVisited, movedVertex);
-                visitedByNo.set(whereInVisited, movedVertexNo);
-
-                redsSeen = 1;
+                if (whereInVisited != 50) {
+                    visited.set(k + 1, bestVertFix);
+                    visitedByNo.set(k + 1, bestVertFixNo);
+                    visited.set(whereInVisited, movedVertex);
+                    visitedByNo.set(whereInVisited, movedVertexNo);
+                    redsSeen = 1;
+                } else {
+                    System.out.println(visited);
+                    int consecSeen = 0;
+                    int okFix = Integer.MAX_VALUE;
+                    int fixIndex = 50;
+                    for (int z = k + 4; z < graphSize; z++) {
+                        if (visited.get(z).color == 0) {
+                            consecSeen++;
+                            if (consecSeen > 1) {
+                                GraphEdge firstEdge = (GraphEdge) inputGraph.getEdge(visited.get(z - 1), movedVertex);
+                                GraphEdge secondEdge = (GraphEdge) inputGraph.getEdge(visited.get(z), movedVertex);
+                                if (firstEdge.getEdgeWeight() + secondEdge.getEdgeWeight() < okFix) {
+                                    fixIndex = z;
+                                }
+                            }
+                        } else {
+                            consecSeen = 0;
+                        }
+                    }
+                    visited.remove(movedVertexNo);
+                    visitedByNo.remove(movedVertexNo);
+                    visited.add(fixIndex - 1, movedVertex);
+                    visitedByNo.add(fixIndex - 1, movedVertexNo);
+                    redsSeen = 3;
+                }
             }
         }
 

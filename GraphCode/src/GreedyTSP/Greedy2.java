@@ -30,8 +30,6 @@ public class Greedy2 {
 
             int minDist = Integer.MAX_VALUE;
             ColoredVertex minVertex = null;
-
-
             for (ColoredVertex vertex : complement) {
                 GraphEdge edge = inputGraph.getEdge(greedyPath.getMostRecentVertex(), vertex);
                 if (edge.getEdgeWeight() < minDist) {
@@ -52,7 +50,6 @@ public class Greedy2 {
 
             greedyPath.addVertex(minVertex);
         }
-
         return greedyPath;
     }
 

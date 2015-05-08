@@ -4,6 +4,7 @@ import Graph.ColoredVertex;
 import Graph.GraphEdge;
 import Graph.NPGraph;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -18,8 +19,8 @@ public class GreedySolver implements OnProblemSolvedListener {
         this.graph = graph;
     }
 
-    public void solveGreedily() {
-        Greedy2.executeGreedyAlgorithm(graph, 5);
+    public Path solveGreedily() {
+        return Greedy2.executeGreedyAlgorithm(graph, 5);
     }
 
     @Override

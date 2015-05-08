@@ -76,6 +76,15 @@ public class GreedyAlgorithm {
                     }
                 }
 
+                String interColor = new String();
+                for (int i = 0; i < visited.size() - 1; i++) {
+                    GraphEdge thisEdge = (GraphEdge) inputGraph.getEdge(visited.get(i), visited.get(i + 1));
+                    totalWeight += thisEdge.getEdgeWeight();
+                    interColor += visited.get(i).color;
+                }
+                interColor += visited.get(visited.size() - 1).color;
+                System.out.println(interColor);
+
                 if (whereInVisited != 50) {
                     visited.set(k + 1, bestVertFix);
                     visitedByNo.set(k + 1, bestVertFixNo);
@@ -83,7 +92,7 @@ public class GreedyAlgorithm {
                     visitedByNo.set(whereInVisited, movedVertexNo);
                     bluesSeen = 1;
                 } else {
-                    System.out.println(visited);
+                    System.out.println("BOO");
                     int consecSeen = 0;
                     int okFix = Integer.MAX_VALUE;
                     int fixIndex = 50;
@@ -133,6 +142,15 @@ public class GreedyAlgorithm {
                     }
                 }
 
+                String interColor = new String();
+                for (int i = 0; i < visited.size() - 1; i++) {
+                    GraphEdge thisEdge = (GraphEdge) inputGraph.getEdge(visited.get(i), visited.get(i + 1));
+                    totalWeight += thisEdge.getEdgeWeight();
+                    interColor += visited.get(i).color;
+                }
+                interColor += visited.get(visited.size() - 1).color;
+                System.out.println(interColor);
+
                 if (whereInVisited != 50) {
                     visited.set(k + 1, bestVertFix);
                     visitedByNo.set(k + 1, bestVertFixNo);
@@ -140,7 +158,6 @@ public class GreedyAlgorithm {
                     visitedByNo.set(whereInVisited, movedVertexNo);
                     redsSeen = 1;
                 } else {
-                    System.out.println(visited);
                     int consecSeen = 0;
                     int okFix = Integer.MAX_VALUE;
                     int fixIndex = 50;

@@ -1,7 +1,10 @@
 package Graph;
 
 import BranchAndBound.*;
+import GreedyTSP.Greedy2;
 import GreedyTSP.GreedyAlgorithm;
+import GreedyTSP.GreedySolver;
+import GreedyTSP.Path;
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraphView;
@@ -25,10 +28,19 @@ public class Main {
         int minEdgeWeight = 0;
         int maxEdgeWeight = 100;
 
-        NPGraph<ColoredVertex,GraphEdge> randomGraph = GraphGenerator
-                .generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);
 
-        GreedyAlgorithm.greedy(randomGraph);
+
+            NPGraph<ColoredVertex, GraphEdge> randomGraph = GraphGenerator
+                    .generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);
+
+        GreedySolver solver = new GreedySolver(randomGraph);
+        solver.solveGreedily();
+
+        }
+
+        //GreedyAlgorithm.greedy(randomGraph);
+
+
         //BBSubproblem solution = BranchAndBoundAlgorithm.branchAndBoundRandomStart(randomGraph);
         //System.out.println(solution.path);
 
@@ -40,9 +52,6 @@ public class Main {
             e.printStackTrace();
         }*/
 
-
-
-    }
 
     public static void runExactSolver() {
         int MIN_SIZE_THRESHOLD = 15;

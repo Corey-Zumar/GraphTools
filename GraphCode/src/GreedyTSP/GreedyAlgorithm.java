@@ -15,6 +15,7 @@ public class GreedyAlgorithm {
         int lastVertNo = 0;
         visited.add(lastVertex);
         List<Integer> visitedByNo = new ArrayList<Integer>();
+        visitedByNo.add(lastVertNo);
         int graphSize = inputGraph.vertexSet().size();
         int totalWeight = 0;
         for (int i = 1; i < graphSize; i++) { //We have to run this 49 times in order to find a successor for each vertex
@@ -116,7 +117,7 @@ public class GreedyAlgorithm {
             }
         }
 
-        String answerColor = new String;
+        String answerColor = new String();
         totalWeight = 0;
         for (int i = 0; i < visited.size() - 1; i++) {
             GraphEdge currEdge = (GraphEdge) inputGraph.getEdge(visited.get(i), visited.get(i + 1));

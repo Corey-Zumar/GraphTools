@@ -116,11 +116,17 @@ public class GreedyAlgorithm {
             }
         }
 
+        String answerColor = new String;
         totalWeight = 0;
         for (int i = 0; i < visited.size() - 1; i++) {
             GraphEdge currEdge = (GraphEdge) inputGraph.getEdge(visited.get(i), visited.get(i + 1));
             totalWeight += currEdge.getEdgeWeight();
+            answerColor += visited.get(i).color;
         }
+
+        System.out.println(visitedByNo);
+        System.out.println(totalWeight);
+        System.out.print(answerColor);
 
     }
 }

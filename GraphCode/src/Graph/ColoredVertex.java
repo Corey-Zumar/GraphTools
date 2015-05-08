@@ -35,4 +35,8 @@ public class ColoredVertex {
         return String.valueOf(number + 1) + "\n" + (color == COLOR_BLUE ? "BLUE" : "RED");
     }
 
+    public boolean equals(ColoredVertex other) {
+        return number == other.number;
+    }
+
 }

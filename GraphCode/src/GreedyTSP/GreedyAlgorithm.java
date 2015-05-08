@@ -193,9 +193,9 @@ public class GreedyAlgorithm {
         }
         answerColor += visited.get(visited.size() - 1).color;
 
-        //System.out.println(visitedByNo);
-        //System.out.println(totalWeight);
-        //System.out.print(answerColor);
+        System.out.println(visitedByNo);
+        System.out.println(totalWeight);
+        System.out.print(answerColor);
 
     }
 }

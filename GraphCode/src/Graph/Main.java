@@ -1,7 +1,6 @@
 package Graph;
 
-import BranchAndBound.*;
-import GreedyTSP.*;
+import BranchAndBound.ExactSolverExecutor;
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraphView;
@@ -9,7 +8,7 @@ import org.jgrapht.ext.JGraphXAdapter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -24,36 +23,23 @@ public class Main {
         int maxVertices = 50;
         int minEdgeWeight = 0;
         int maxEdgeWeight = 100;
-        int fileCount = 495;
 
 
-        NPGraph<ColoredVertex, GraphEdge> randomGraph = GraphGenerator
-                .generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);
 
-        for (int i = 2; i < 3; i++) {
-            try {
-                NPGraph toSolve = processInstanceGraph(i);
-                GreedySolver solver = new GreedySolver(toSolve);
-                Path sol = solver.solveGreedily();
-                List<ColoredVertex> solVertices = sol.vertices;
-                GreedySolution solWrite = new GreedySolution(i + ".in", solVertices);
-                solWrite.writeToFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        NPGraph<ColoredVertex, GraphEdge> randomGraph = GraphGenerator.generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);
 
+        //GreedySolver solver = new GreedySolver(randomGraph);
+        //solver.solveGreedily();
+            GreedyTSP.GreedyAlgorithm.greedy(randomGraph);
         }
 
 
-//        runExactSolver();
-    }
-
-        //GreedyAlgorithm.greedy(randomGraph);
 
 
         //BBSubproblem solution = BranchAndBoundAlgorithm.branchAndBoundRandomStart(randomGraph);
         //System.out.println(solution.path);
 
+        //runExactSolver();
 
         /*try {
             displayGraph(processInstanceGraph(57));
@@ -88,7 +74,7 @@ public class Main {
         int minEdgeWeight = 0;
         int maxEdgeWeight = 100;
 
-        String outputFileNameNoExtension = "PolynomialLovers1";
+        String outputFileNameNoExtension = "BITCHTITS2";
 
         NPGraph<ColoredVertex,GraphEdge> randomGraph = GraphGenerator
                 .generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);

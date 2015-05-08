@@ -1,7 +1,6 @@
 package Graph;
 
 import BranchAndBound.*;
-import GreedyTSP.GreedyAlgorithm;
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraphView;
@@ -34,18 +33,8 @@ public class Main {
 
         //runExactSolver();
 
-        /*try {
-            displayGraph(processInstanceGraph(57));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
         try {
-            NPGraph<ColoredVertex,GraphEdge> graph = processInstanceGraph(57);
-
-            BBSubproblem soln = BranchAndBoundAlgorithm.branchAndBound(graph, 3);
-            System.out.println(soln.currentCost);
-            System.out.println(soln.path);
+            OutputFileWriter.writeOutputsToMergedFile("OUTTITS");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -53,13 +42,14 @@ public class Main {
     }
 
     public static void runExactSolver() {
-        int SIZE_THRESHOLD = 4;
+        int MIN_SIZE_THRESHOLD = 15;
+        int MAX_SIZE_THRESHOLD = 16;
 
         List<Integer> sizes = InstanceProcessor.getInstanceSizes("../instances/");
 
-        ExactSolverExecutor executor = new ExactSolverExecutor(sizes, SIZE_THRESHOLD);
+        ExactSolverExecutor executor = new ExactSolverExecutor(sizes, MIN_SIZE_THRESHOLD, MAX_SIZE_THRESHOLD);
         try {
-            executor.execute();
+            executor.executeRandom();
         } catch (IOException e) {
             e.printStackTrace();
         }

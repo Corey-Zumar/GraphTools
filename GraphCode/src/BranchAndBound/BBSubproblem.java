@@ -40,8 +40,6 @@ public class BBSubproblem implements Comparable<BBSubproblem> {
 
         int newEdgeWeight = ((GraphEdge) graph.getEdge(oldProblem.targetVertex, newVertex)).getEdgeWeight();
 
-        System.out.println("STRING: " + graph.getEdge(oldProblem.targetVertex, newVertex).customWeight + " WEIGHT: " + newEdgeWeight);
-
         if(oldProblem.currentCost < Integer.MAX_VALUE) {
             this.currentCost = oldProblem.currentCost + newEdgeWeight;
         } else {

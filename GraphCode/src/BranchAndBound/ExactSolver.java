@@ -17,11 +17,17 @@ public class ExactSolver implements OnProblemSolvedListener {
     private BBSubproblem bestSolution;
     private OnSolverCompletedListener listener;
     private String problemName;
+    private boolean solvingRandomly;
 
     public ExactSolver(NPGraph<ColoredVertex,GraphEdge> inputGraph, String problemName, OnSolverCompletedListener listener) {
         this.graph = inputGraph;
         this.listener = listener;
         this.problemName = problemName;
+    }
+
+    public void solveExactlyFromRandomVertex() {
+        solvingRandomly = true;
+        OnProblemSolved(BranchAndBoundAlgorithm.branchAndBoundRandomStart(graph));
     }
 
     public void solveExactly() {
@@ -31,7 +37,7 @@ public class ExactSolver implements OnProblemSolvedListener {
 
                 @Override
                 public void run() {
-                    OnProblemSolved(BranchAndBoundAlgorithm.branchAndBound(new NPGraph<ColoredVertex,GraphEdge>(graph), vertex.number));
+                    OnProblemSolved(BranchAndBoundAlgorithm.branchAndBound(new NPGraph<ColoredVertex, GraphEdge>(graph), vertex.number));
                 }
             });
         }
@@ -45,8 +51,11 @@ public class ExactSolver implements OnProblemSolvedListener {
         }
         verticesSolvedFrom++;
 
-        if(verticesSolvedFrom == graph.vertexSet().size()) {
+        if(verticesSolvedFrom == graph.vertexSet().size() || solvingRandomly) {
             listener.OnSolverCompleted(bestSolution, problemName);
+        }
+        if(solvingRandomly) {
+            solvingRandomly = false;
         }
     }
 }

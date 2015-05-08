@@ -26,6 +26,23 @@ public class ExactSolverExecutor implements OnSolverCompletedListener {
         }
     }
 
+    public ExactSolverExecutor(List<Integer> sizes, int minSize, int maxSize) {
+        problems = new ArrayList<Integer>();
+        for (int i = 0; i < sizes.size(); i++) {
+            if (sizes.get(i) <= maxSize && sizes.get(i) >= minSize) {
+                problems.add(i + 1);
+            }
+        }
+    }
+
+    public void executeRandom() throws IOException {
+        for(Integer problemNumber : problems) {
+            NPGraph<ColoredVertex, GraphEdge> instanceGraph = InstanceProcessor.createGraphFromInstance("../instances/" + problemNumber + ".in");
+            ExactSolver solver = new ExactSolver(instanceGraph, String.valueOf(problemNumber), this);
+            solver.solveExactlyFromRandomVertex();
+        }
+    }
+
     public void execute() throws IOException {
         for(Integer problemNumber : problems) {
             NPGraph<ColoredVertex, GraphEdge> instanceGraph = InstanceProcessor.createGraphFromInstance("../instances/" + problemNumber + ".in");

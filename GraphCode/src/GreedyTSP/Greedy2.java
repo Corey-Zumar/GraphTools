@@ -56,5 +56,9 @@ public class Greedy2 {
         return greedyPath;
     }
 
+    private static void getEdge(NPGraph<ColoredVertex,GraphEdge> graph, ColoredVertex source, ColoredVertex target) {
+
+    }
+
 
 }

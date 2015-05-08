@@ -30,7 +30,7 @@ public class Main {
 
         //GreedySolver solver = new GreedySolver(randomGraph);
         //solver.solveGreedily();
-        GreedyTSP.GreedyAlgorithm.greedy(randomGraph);
+            GreedyTSP.GreedyAlgorithm.greedy(randomGraph);
         }
 
 

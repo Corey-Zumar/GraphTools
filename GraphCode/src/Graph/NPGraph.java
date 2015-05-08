@@ -17,6 +17,18 @@ public class NPGraph<V, E> extends ListenableUndirectedWeightedGraph<V, E> {
         super(edgeClass);
     }
 
+    public NPGraph(NPGraph<ColoredVertex,GraphEdge> graph) {
+        super((Class) GraphEdge.class);
+        verticesList = new ArrayList<ColoredVertex>();
+        for(ColoredVertex vertex : graph.vertexSet()) {
+            addVertex((V) vertex);
+            verticesList.add(vertex);
+        }
+        for(GraphEdge edge : graph.edgeSet()) {
+            addEdge((V) edge.getSourceVertexObject(), (V) edge.getTargetVertexObject(), (E) edge);
+        }
+    }
+
     public void outputGraphData() throws FileNotFoundException, UnsupportedEncodingException {
         Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("graph.txt"), "utf-8"));
         new MatrixExporter<ColoredVertex, GraphEdge>().exportAdjacencyMatrix(writer, (ListenableUndirectedWeightedGraph<ColoredVertex, GraphEdge>) this);

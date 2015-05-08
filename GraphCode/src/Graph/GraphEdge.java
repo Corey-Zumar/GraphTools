@@ -37,5 +37,13 @@ public class GraphEdge extends DefaultWeightedEdge {
         return ((ColoredVertex) getTarget()).number;
     }
 
+    public ColoredVertex getSourceVertexObject() {
+        return (ColoredVertex) getSource();
+    }
+
+    public ColoredVertex getTargetVertexObject() {
+        return (ColoredVertex) getTarget();
+    }
+
 
 }

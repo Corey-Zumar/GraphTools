@@ -16,21 +16,22 @@ public class ExactSolver implements OnProblemSolvedListener {
     private int verticesSolvedFrom;
     private BBSubproblem bestSolution;
     private OnSolverCompletedListener listener;
+    private String problemName;
 
-    public ExactSolver(NPGraph<ColoredVertex,GraphEdge> inputGraph, OnSolverCompletedListener listener) {
+    public ExactSolver(NPGraph<ColoredVertex,GraphEdge> inputGraph, String problemName, OnSolverCompletedListener listener) {
         this.graph = inputGraph;
         this.listener = listener;
+        this.problemName = problemName;
     }
 
     public void solveExactly() {
-        graph.getVerticesAsList(); //Make sure the vertices list is ready before we spawn new threads
         ExecutorService executorService = Executors.newFixedThreadPool(graph.vertexSet().size());
         for(final ColoredVertex vertex : graph.vertexSet()) {
             executorService.execute(new Runnable() {
 
                 @Override
                 public void run() {
-                    OnProblemSolved(BranchAndBoundAlgorithm.branchAndBound(graph, vertex.number));
+                    OnProblemSolved(BranchAndBoundAlgorithm.branchAndBound(new NPGraph<ColoredVertex,GraphEdge>(graph), vertex.number));
                 }
             });
         }
@@ -45,7 +46,7 @@ public class ExactSolver implements OnProblemSolvedListener {
         verticesSolvedFrom++;
 
         if(verticesSolvedFrom == graph.vertexSet().size()) {
-            listener.OnSolverCompleted(bestSolution);
+            listener.OnSolverCompleted(bestSolution, problemName);
         }
     }
 }

@@ -5,7 +5,7 @@ package BranchAndBound;
  */
 public interface OnSolverCompletedListener {
 
-    public void OnSolverCompleted(BBSubproblem bestSolution);
+    public void OnSolverCompleted(BBSubproblem bestSolution, String problemName);
 
 
 }

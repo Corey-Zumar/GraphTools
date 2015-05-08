@@ -17,7 +17,7 @@ public class InstanceProcessor {
 
     public static NPGraph createGraphFromInstance(String fileName) throws IOException {
         List<String> lineData = parseFileDataByLine(fileName);
-        int numVertices = Integer.valueOf(lineData.remove(0));
+        int numVertices = Integer.valueOf(lineData.remove(0).trim());
         String graphColoring = lineData.remove(lineData.size() - 1);
 
         NPGraph<ColoredVertex,GraphEdge> instanceGraph = new NPGraph<ColoredVertex,GraphEdge>(GraphEdge.class);
@@ -30,11 +30,11 @@ public class InstanceProcessor {
 
         for(int i = 0; i < lineData.size(); i++) {
             String adjacencyLine = lineData.get(i);
-            String[] edgeWeights = adjacencyLine.split(" ");
+            String[] edgeWeights = adjacencyLine.split("\\s+");
             List<Integer> weights = new ArrayList<Integer>();
             for(String edgeWeight : edgeWeights) {
                 try {
-                    weights.add(Integer.valueOf(edgeWeight));
+                    weights.add(Integer.valueOf(edgeWeight.trim()));
                 } catch(Exception e) {
                     continue;
                 }
@@ -47,7 +47,6 @@ public class InstanceProcessor {
                 }
             }
         }
-
         return instanceGraph;
     }
 

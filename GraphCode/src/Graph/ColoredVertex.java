@@ -32,7 +32,7 @@ public class ColoredVertex {
     }
 
     public String toString() {
-        return String.valueOf(number) + "\n" + (color == COLOR_BLUE ? "BLUE" : "RED");
+        return String.valueOf(number + 1) + "\n" + (color == COLOR_BLUE ? "BLUE" : "RED");
     }
 
 }

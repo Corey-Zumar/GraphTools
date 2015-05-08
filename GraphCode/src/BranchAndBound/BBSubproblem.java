@@ -32,7 +32,7 @@ public class BBSubproblem implements Comparable<BBSubproblem> {
         path.add(startVertex);
     }
 
-    public BBSubproblem(NPGraph graph, BBSubproblem oldProblem, ColoredVertex newVertex) {
+    public BBSubproblem(NPGraph<ColoredVertex,GraphEdge> graph, BBSubproblem oldProblem, ColoredVertex newVertex) {
         this.validVertices = new HashSet<ColoredVertex>(oldProblem.validVertices);
         this.validVertices.add(newVertex);
         this.startVertex = oldProblem.startVertex;
@@ -44,6 +44,8 @@ public class BBSubproblem implements Comparable<BBSubproblem> {
         } else {
             this.currentCost = newEdgeWeight;
         }
+
+        //System.out.println("COST: " + currentCost);
 
         path = new ArrayList<ColoredVertex>(oldProblem.path);
         path.add(newVertex);

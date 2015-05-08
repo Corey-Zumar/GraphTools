@@ -13,9 +13,14 @@ import java.util.*;
  */
 public class BranchAndBoundAlgorithm {
 
-    public static BBSubproblem branchAndBound(NPGraph inputGraph) {
+
+    public static BBSubproblem branchAndBoundRandomStart(NPGraph inputGraph) {
         int randomStartPoint = new Random().ints(1,0,inputGraph.vertexSet().size()).findFirst().getAsInt();
-        ColoredVertex startVertex = inputGraph.getVertex(randomStartPoint);
+        return branchAndBound(inputGraph, randomStartPoint);
+    }
+
+    public static BBSubproblem branchAndBound(NPGraph inputGraph, int startPoint) {
+        ColoredVertex startVertex = inputGraph.getVertex(startPoint);
         HashSet<ColoredVertex> validSet = new HashSet<ColoredVertex>();
         validSet.add(startVertex);
 

@@ -52,14 +52,16 @@ public class BBSubproblem implements Comparable<BBSubproblem> {
     public boolean isValid() {
         int size = path.size();
 
-        if(size < 3) {
+        if(size < 4) {
             return true;
         }
 
         ColoredVertex last = path.get(size - 1);
         ColoredVertex secondToLast = path.get(size - 2);
         ColoredVertex thirdToLast = path.get(size - 3);
-        return !((last.color == secondToLast.color) && (secondToLast.color == thirdToLast.color));
+        ColoredVertex fourthToLast = path.get(size - 4);
+        return !((last.color == secondToLast.color) && (secondToLast.color == thirdToLast.color) &&
+                (thirdToLast.color == fourthToLast.color));
     }
 
     @Override

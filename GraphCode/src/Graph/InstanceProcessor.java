@@ -31,8 +31,16 @@ public class InstanceProcessor {
         for(int i = 0; i < lineData.size(); i++) {
             String adjacencyLine = lineData.get(i);
             String[] edgeWeights = adjacencyLine.split(" ");
-            for(int j = 0; j < edgeWeights.length; j++) {
-                int weight = Integer.valueOf(edgeWeights[j]);
+            List<Integer> weights = new ArrayList<Integer>();
+            for(String edgeWeight : edgeWeights) {
+                try {
+                    weights.add(Integer.valueOf(edgeWeight));
+                } catch(Exception e) {
+                    continue;
+                }
+            }
+            for(int j = 0; j < weights.size(); j++) {
+                int weight = Integer.valueOf(weights.get(j));
                 GraphEdge newEdge = new GraphEdge(weight);
                 if(i != j) {
                     instanceGraph.addEdge(instanceGraph.getVertex(i), instanceGraph.getVertex(j), newEdge);

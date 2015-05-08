@@ -11,7 +11,7 @@ import org.jgrapht.graph.DefaultWeightedEdge;
  */
 public class GraphEdge extends DefaultWeightedEdge {
 
-    int customWeight = -1;
+    public int customWeight = -1;
 
     public GraphEdge() {
 
@@ -22,7 +22,7 @@ public class GraphEdge extends DefaultWeightedEdge {
     }
 
     public int getEdgeWeight() {
-        return (int) getWeight();
+        return (customWeight == -1 ? (int) getWeight() : customWeight);
     }
 
     public String toString() {

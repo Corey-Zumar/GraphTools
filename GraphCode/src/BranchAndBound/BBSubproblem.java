@@ -39,13 +39,14 @@ public class BBSubproblem implements Comparable<BBSubproblem> {
         this.targetVertex = newVertex;
 
         int newEdgeWeight = ((GraphEdge) graph.getEdge(oldProblem.targetVertex, newVertex)).getEdgeWeight();
+
+        System.out.println("STRING: " + graph.getEdge(oldProblem.targetVertex, newVertex).customWeight + " WEIGHT: " + newEdgeWeight);
+
         if(oldProblem.currentCost < Integer.MAX_VALUE) {
             this.currentCost = oldProblem.currentCost + newEdgeWeight;
         } else {
             this.currentCost = newEdgeWeight;
         }
-
-        //System.out.println("COST: " + currentCost);
 
         path = new ArrayList<ColoredVertex>(oldProblem.path);
         path.add(newVertex);

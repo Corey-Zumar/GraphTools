@@ -41,7 +41,9 @@ public class Main {
         }*/
 
         try {
-            BBSubproblem soln = BranchAndBoundAlgorithm.branchAndBound(processInstanceGraph(57), 3);
+            NPGraph<ColoredVertex,GraphEdge> graph = processInstanceGraph(57);
+
+            BBSubproblem soln = BranchAndBoundAlgorithm.branchAndBound(graph, 3);
             System.out.println(soln.currentCost);
             System.out.println(soln.path);
         } catch (IOException e) {

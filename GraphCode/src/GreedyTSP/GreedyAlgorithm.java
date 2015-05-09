@@ -100,8 +100,8 @@ public class GreedyAlgorithm {
                         if (visited.get(z).color == 1) {
                             consecSeen++;
                             if (consecSeen > 1) {
-                                GraphEdge firstEdge = (GraphEdge) inputGraph.getEdge(visited.get(z - 1), k + 1);
-                                GraphEdge secondEdge = (GraphEdge) inputGraph.getEdge(visited.get(z), k + 1);
+                                GraphEdge firstEdge = (GraphEdge) inputGraph.getEdge(visited.get(z - 1), visited.get(k + 1));
+                                GraphEdge secondEdge = (GraphEdge) inputGraph.getEdge(visited.get(z), visited.get(k + 1));
                                 if (firstEdge.getEdgeWeight() + secondEdge.getEdgeWeight() < okFix) {
                                     fixIndex = z;
                                 }
@@ -165,8 +165,8 @@ public class GreedyAlgorithm {
                         if (visited.get(z).color == 0) {
                             consecSeen++;
                             if (consecSeen > 1) {
-                                GraphEdge firstEdge = (GraphEdge) inputGraph.getEdge(visited.get(z - 1), k + 1);
-                                GraphEdge secondEdge = (GraphEdge) inputGraph.getEdge(visited.get(z), k + 1);
+                                GraphEdge firstEdge = (GraphEdge) inputGraph.getEdge(visited.get(z - 1), visited.get(k + 1));
+                                GraphEdge secondEdge = (GraphEdge) inputGraph.getEdge(visited.get(z), visited.get(k + 1));
                                 if (firstEdge.getEdgeWeight() + secondEdge.getEdgeWeight() < okFix) {
                                     fixIndex = z;
                                 }

@@ -1,6 +1,7 @@
 package Graph;
 
-import BranchAndBound.ExactSolverExecutor;
+import BranchAndBound.*;
+import GreedyTSP.*;
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraphView;
@@ -8,7 +9,7 @@ import org.jgrapht.ext.JGraphXAdapter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 /**
@@ -23,23 +24,35 @@ public class Main {
         int maxVertices = 50;
         int minEdgeWeight = 0;
         int maxEdgeWeight = 100;
+        int fileCount = 495;
 
 
+        NPGraph<ColoredVertex, GraphEdge> randomGraph = GraphGenerator
+                .generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);
 
-        NPGraph<ColoredVertex, GraphEdge> randomGraph = GraphGenerator.generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);
+        for (int i = 1; i <= fileCount; i++) {
+            try {
+                NPGraph toSolve = processInstanceGraph(i);
+                GreedySolver solver = new GreedySolver(toSolve);
+                List<ColoredVertex> sol = solver.solveGreedily();
+                GreedySolution solWrite = new GreedySolution(i + ".in", sol);
+                solWrite.writeToFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-        //GreedySolver solver = new GreedySolver(randomGraph);
-        //solver.solveGreedily();
-            GreedyTSP.GreedyAlgorithm.greedy(randomGraph);
         }
 
 
+//        runExactSolver();
+    }
+
+        //GreedyAlgorithm.greedy(randomGraph);
 
 
         //BBSubproblem solution = BranchAndBoundAlgorithm.branchAndBoundRandomStart(randomGraph);
         //System.out.println(solution.path);
 
-        //runExactSolver();
 
         /*try {
             displayGraph(processInstanceGraph(57));
@@ -49,8 +62,8 @@ public class Main {
 
 
     public static void runExactSolver() {
-        int MIN_SIZE_THRESHOLD = 15;
-        int MAX_SIZE_THRESHOLD = 16;
+        int MIN_SIZE_THRESHOLD = 0;
+        int MAX_SIZE_THRESHOLD = 9;
 
         List<Integer> sizes = InstanceProcessor.getInstanceSizes("../instances/");
 
@@ -74,7 +87,7 @@ public class Main {
         int minEdgeWeight = 0;
         int maxEdgeWeight = 100;
 
-        String outputFileNameNoExtension = "BITCHTITS2";
+        String outputFileNameNoExtension = "PolynomialLovers1";
 
         NPGraph<ColoredVertex,GraphEdge> randomGraph = GraphGenerator
                 .generateRandomGraph(minVertices, maxVertices, minEdgeWeight, maxEdgeWeight);

@@ -19,8 +19,8 @@ public class GreedySolver implements OnProblemSolvedListener {
         this.graph = graph;
     }
 
-    public Path solveGreedily() {
-        return Greedy2.executeGreedyAlgorithm(graph, 5);
+    public List<ColoredVertex> solveGreedily() {
+        return GreedyAlgorithm.greedy(graph);
     }
 
     @Override

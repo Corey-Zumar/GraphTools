@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class GreedyAlgorithm {
 
-    public static void greedy(NPGraph inputGraph) {
+    public static List<ColoredVertex> greedy(NPGraph inputGraph) {
         List<ColoredVertex> vertexList = inputGraph.getVerticesAsList();
         List<ColoredVertex> visited = new ArrayList<ColoredVertex>();
         ColoredVertex lastVertex = vertexList.get(0);
@@ -100,8 +100,8 @@ public class GreedyAlgorithm {
                         if (visited.get(z).color == 1) {
                             consecSeen++;
                             if (consecSeen > 1) {
-                                GraphEdge firstEdge = (GraphEdge) inputGraph.getEdge(visited.get(z - 1), movedVertex);
-                                GraphEdge secondEdge = (GraphEdge) inputGraph.getEdge(visited.get(z), movedVertex);
+                                GraphEdge firstEdge = (GraphEdge) inputGraph.getEdge(visited.get(z - 1), k+1);
+                                GraphEdge secondEdge = (GraphEdge) inputGraph.getEdge(visited.get(z), k+1);
                                 if (firstEdge.getEdgeWeight() + secondEdge.getEdgeWeight() < okFix) {
                                     fixIndex = z;
                                 }
@@ -110,10 +110,10 @@ public class GreedyAlgorithm {
                             consecSeen = 0;
                         }
                     }
-                    ColoredVertex fuckthis = visited.remove(k + 1);
-                    int fuckthismore = visitedByNo.remove(k + 1);
-                    visited.add(fixIndex - 1, fuckthis);
-                    visitedByNo.add(fixIndex - 1, fuckthismore);
+                    ColoredVertex toRemove = visited.remove(k + 1);
+                    int toRemoveNo = visitedByNo.remove(k + 1);
+                    visited.add(fixIndex - 1, toRemove);
+                    visitedByNo.add(fixIndex - 1, toRemoveNo);
                     bluesSeen = 3;
                 }
             }
@@ -175,10 +175,10 @@ public class GreedyAlgorithm {
                             consecSeen = 0;
                         }
                     }
-                    ColoredVertex fuckthis = visited.remove(k + 1);
-                    int fuckthismore = visitedByNo.remove(k + 1);
-                    visited.add(fixIndex - 1, fuckthis);
-                    visitedByNo.add(fixIndex - 1, fuckthismore);
+                    ColoredVertex toRemove = visited.remove(k + 1);
+                    int toRemoveNo = visitedByNo.remove(k + 1);
+                    visited.add(fixIndex - 1, toRemove);
+                    visitedByNo.add(fixIndex - 1, toRemoveNo);
                     redsSeen = 3;
                 }
             }
@@ -192,10 +192,10 @@ public class GreedyAlgorithm {
             answerColor += visited.get(i).color;
         }
         answerColor += visited.get(visited.size() - 1).color;
-
-        System.out.println(visitedByNo);
-        System.out.println(totalWeight);
-        System.out.print(answerColor);
+        return visited;
+        //System.out.println(visitedByNo);
+        //System.out.println(totalWeight);
+        //System.out.print(answerColor);
 
     }
 }
